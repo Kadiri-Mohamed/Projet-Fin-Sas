@@ -14,4 +14,9 @@ Produit produits[] = {
 };
 
 int produit_count = sizeof(produits) / sizeof(produits[0]);
-Client client[MAX_CLIENT];
+Client clients[MAX_CLIENT];
+Achat achats[MAX_ACHAT];
+
+int counter_client = 0;
+
+int achat_count = 0;

@@ -4,6 +4,7 @@ void main_menu()
 {
     int choise_main;
 
+    int choise;
     do
     {
 
@@ -20,38 +21,44 @@ void main_menu()
         switch (choise_main)
         {
         case 1:
-            system("cls");
-            printf("_______________________________________________\n");
-
-            int choise;
-
-            printf("1. modifier votre profile\n");
-            printf("2. Consulter votre profil\n");
-
-            printf("Entrez votre choix: ");
-            scanf("%d", &choise);
-
-            gerer_client(choise);
+            if (counter_client == 0)
+            {
+                printf("Creation de profil\n");
+                ajouter_client(clients);
+            }
+            else
+            {
+                int choise;
+                printf("1. Modifier votre profile\n");
+                printf("2. Consulter votre profil\n");
+                printf("Entrez votre choix: ");
+                scanf("%d", &choise);
+                gerer_client(choise);
+            }
             break;
         case 2:
             system("cls");
             printf("_______________________________________________\n");
 
-            int choise;
-
-            printf("1. Consultater votre solde \n");
-            printf("2. depot d'argent\n");
-
-            printf("Entrez votre choix: ");
-            scanf("%d", &choise);
-
-            gerer_solde(choise);
+            if (counter_client == 0)
+            {
+                printf("Aucun client connecte. Veuillez d'abord creer un profil.\n");
+            }
+            else
+            {
+                int choise;
+                printf("1. Consulter votre solde\n");
+                printf("2. Depot d'argent\n");
+                printf("Entrez votre choix: ");
+                scanf("%d", &choise);
+                gerer_solde(choise);
+            }
             break;
         case 3:
             system("cls");
             printf("_______________________________________________\n");
 
-            int choise;
+            // int choise;
 
             printf("1. Afficher catalogue \n");
             printf("2. Rechercher produit\n");
@@ -66,7 +73,7 @@ void main_menu()
         case 4:
             system("cls");
             printf("_______________________________________________\n");
-
+            // Effectuer_achat();
             break;
         default:
             system("cls");
