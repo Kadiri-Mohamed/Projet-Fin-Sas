@@ -109,8 +109,12 @@ void main_menu()
                        "\033[0m");
                 break;
             }
-
-            // Effectuer_achat();
+            int product_id, quantity;
+            printf("Entrez l'ID du produit a acheter: ");
+            scanf("%d", &product_id);
+            printf("Entrez la quantite a acheter: ");
+            scanf("%d", &quantity);
+            Effectuer_achat( product_id, quantity);
             break;
         default:
             system("cls");

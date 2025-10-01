@@ -19,15 +19,15 @@ typedef struct
     float solde;
 } Client;
 
-typedef struct
-{
-    int idAchat;
-    int idClient;
-    int idProduit;
-    int quantite;
-    float montantTotal;
-    char date[20];
-} Achat;
+// typedef struct
+// {
+//     int idAchat;
+//     int idClient;
+//     int idProduit;
+//     int quantite;
+//     float montantTotal;
+//     char date[20];
+// } Achat;
 
 typedef struct
 {
@@ -43,13 +43,14 @@ typedef struct
     float prix;
     int stock;
     char description[100];
+    int quantity_sold;
 } Produit;
 
 extern Categorie categories[];
 extern Produit produits[];
 extern int produit_count;
 extern Client clients[MAX_CLIENT];
-extern Achat achats[MAX_ACHAT];
+// extern Achat achats[MAX_ACHAT];
 
 extern int counter_client;
 extern int achat_count;
@@ -87,7 +88,7 @@ void detailler_produit(int product_id, Produit table[MAX_PRODUIT]);
 
 // void tri_produits(int tri_choise, Produit table[MAX_PRODUIT]);
 // void rechercher_produit(int search_choise, Produit table[MAX_PRODUIT]);
-// void Effectuer_achat();
+void Effectuer_achat(int product_id, int quantity);
 // void afficher_statistiques();
 
 void main_menu();

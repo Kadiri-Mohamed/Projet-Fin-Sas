@@ -105,7 +105,7 @@ void organiser_produits_par_categorie(Produit table[MAX_PRODUIT], int category_i
 {
     printf("---------------------------------------------------------------------------- \n");
     int found = 0;
-    for (int i = 0; i < produit_count ; i++)
+    for (int i = 0; i < produit_count; i++)
     {
         if (table[i].categorie.idCategorie == category_id)
         {
