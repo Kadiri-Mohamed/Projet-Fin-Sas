@@ -159,7 +159,7 @@ void rechercher_produits_nom(Produit table[MAX_PRODUIT], char name[20])
     int found = 0;
     for (int i = 0; i < produit_count; i++)
     {
-        if (strcasecmp(table[i].nom, name) == 0)
+        if (strstr(table[i].nom, name) != 0)
         {
             printf("\033[33m"
                    "ID: %d, Nom: %s, Categorie: %s, Prix: %.2f, Stock: %d\nDescription: %s\n"

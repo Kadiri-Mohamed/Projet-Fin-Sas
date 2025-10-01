@@ -116,6 +116,11 @@ void main_menu()
             scanf("%d", &quantity);
             Effectuer_achat( product_id, quantity);
             break;
+        case 5:
+            system("cls");
+            printf("_______________________________________________\n");
+            afficher_statistiques();
+            break;
         default:
             system("cls");
             printf("_______________________________________________\n");
@@ -256,6 +261,105 @@ void consluter_produits(int choise)
         printf("_______________________________________________\n");
         printf("choix invalide\n");
         break;
+    }
+}
+
+// Effectuer achat
+
+void Effectuer_achat(int product_id, int quantity)
+{
+
+    int found = 0;
+    for (int i = 0; i < produit_count; i++)
+    {
+        if (produits[i].idProduit == product_id)
+        {
+            found = 1;
+            if (produits[i].stock < quantity)
+            {
+                printf("\033[31m"
+                       "Stock insuffisant pour le produit '%s'. Stock disponible: %d\n"
+                       "\033[0m",
+                       produits[i].nom, produits[i].stock);
+                return;
+            }
+
+            float total_price = produits[i].prix * quantity;
+            if (clients[counter_client - 1].solde < total_price)
+            {
+                printf("\033[31m"
+                       "Solde insuffisant. Votre solde: %.2fMAD, Montant requis: %.2fMAD\n"
+                       "\033[0m",
+                       clients[counter_client - 1].solde, total_price);
+                return;
+            }
+
+            printf("\033[33m""Confirmer l'achat de %d x '%s' pour un total de %.2fMAD? (o/n): ""\033[0m", quantity, produits[i].nom, total_price);
+            char confirm;
+            scanf(" %c", &confirm);
+            if (confirm == 'n' || confirm == 'N')
+            {
+                printf("\033[31m"
+                       "Achat annule.\n"
+                       "\033[0m");
+                return;
+            }
+
+            produits[i].stock -= quantity;
+            clients[counter_client - 1].solde -= total_price;
+            produits[i].quantity_sold += quantity;
+            
+            printf("\033[32m"
+                "Achat reussi! Vous avez achete %d x '%s' , total est %.2fMAD.\n"
+                "votre solde now: %.2fMAD\n"
+                "\033[0m",
+                quantity, produits[i].nom, total_price, clients[counter_client - 1].solde);
+                achat_count++;
+            return;
+        }
+    }
+
+    if (!found)
+    {
+        printf("\033[31m"
+               "Produit avec ID %d non trouve.\n"
+               "\033[0m",
+               product_id);
+    }
+}
+
+// Consultation statistiques personnelles
+void afficher_statistiques()
+{
+    if (counter_client == 0)
+    {
+        printf("\033[31m"
+               "Aucun client connecte. Veuillez d'abord creer un profil.\n"
+               "\033[0m");
+        return;
+    }
+
+    printf("\033[34m"
+           "Statistiques personnelles\n"
+           "\033[0m");
+
+    printf("\033[32m""Client: %s %s\n""\033[0m", clients[counter_client - 1].prenom, clients[counter_client - 1].nom);
+    printf("\033[32m""Solde actuel: %.2fMAD\n""\033[0m", clients[counter_client - 1].solde);
+    printf("\033[32m""Nombre total d'achats effectues: %d\n""\033[0m", achat_count);
+
+    printf("\033[34m""Produits achetes:\n""\033[0m");
+    int any_purchase = 0;
+    for (int i = 0; i < produit_count; i++)
+    {
+        if (produits[i].quantity_sold > 0)
+        {
+            any_purchase = 1;
+            printf("\033[33m""- %s: %d achetes\n""\033[0m", produits[i].nom, produits[i].quantity_sold);
+        }
+    }
+    if (!any_purchase)
+    {
+        printf("\033[33m""Aucun produit achete encore.\n""\033[0m");
     }
 }
 

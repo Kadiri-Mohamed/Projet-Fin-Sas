@@ -8,6 +8,8 @@ Categorie categories[] = {
 
 Produit produits[] = {
     {1, "Smartphone", {1, "Electronique"}, 699.99, 50, "Un smartphone haut de gamme avec un excellent appareil photo.", 0},
+    {5, "iphone 11", {1, "Electronique"}, 699.99, 50, "Un smartphone haut de gamme avec un excellent appareil photo.", 0},
+    {6, "iphone 7", {1, "Electronique"}, 699.99, 50, "Un smartphone haut de gamme avec un excellent appareil photo.", 0},
     {2, "Ordinateur Portable", {4, "Sports"}, 999.99, 30, "Un ordinateur portable puissant pour le travail et le divertissement.", 0},
     {3, "Aspirateur Robot", {3, "Livres"}, 299.99, 20, "Un aspirateur robot intelligent pour un nettoyage sans effort.", 0},
     {4, "Lampe de Bureau", {2, "Maison"}, 49.99, 100, "Une lampe de bureau LED avec intensite reglable.", 0},

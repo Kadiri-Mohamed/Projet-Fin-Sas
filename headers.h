@@ -89,7 +89,8 @@ void detailler_produit(int product_id, Produit table[MAX_PRODUIT]);
 // void tri_produits(int tri_choise, Produit table[MAX_PRODUIT]);
 // void rechercher_produit(int search_choise, Produit table[MAX_PRODUIT]);
 void Effectuer_achat(int product_id, int quantity);
-// void afficher_statistiques();
+
+void afficher_statistiques();
 
 void main_menu();
 
