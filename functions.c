@@ -114,7 +114,7 @@ void main_menu()
             scanf("%d", &product_id);
             printf("Entrez la quantite a acheter: ");
             scanf("%d", &quantity);
-            Effectuer_achat( product_id, quantity);
+            Effectuer_achat(product_id, quantity);
             break;
         case 5:
             system("cls");
@@ -294,7 +294,10 @@ void Effectuer_achat(int product_id, int quantity)
                 return;
             }
 
-            printf("\033[33m""Confirmer l'achat de %d x '%s' pour un total de %.2fMAD? (o/n): ""\033[0m", quantity, produits[i].nom, total_price);
+            printf("\033[33m"
+                   "Confirmer l'achat de %d x '%s' pour un total de %.2fMAD? (o/n): "
+                   "\033[0m",
+                   quantity, produits[i].nom, total_price);
             char confirm;
             scanf(" %c", &confirm);
             if (confirm == 'n' || confirm == 'N')
@@ -308,13 +311,13 @@ void Effectuer_achat(int product_id, int quantity)
             produits[i].stock -= quantity;
             clients[counter_client - 1].solde -= total_price;
             produits[i].quantity_sold += quantity;
-            
+
             printf("\033[32m"
-                "Achat reussi! Vous avez achete %d x '%s' , total est %.2fMAD.\n"
-                "votre solde now: %.2fMAD\n"
-                "\033[0m",
-                quantity, produits[i].nom, total_price, clients[counter_client - 1].solde);
-                achat_count++;
+                   "Achat reussi! Vous avez achete %d x '%s' , total est %.2fMAD.\n"
+                   "votre solde now: %.2fMAD\n"
+                   "\033[0m",
+                   quantity, produits[i].nom, total_price, clients[counter_client - 1].solde);
+            achat_count++;
             return;
         }
     }
@@ -343,24 +346,49 @@ void afficher_statistiques()
            "Statistiques personnelles\n"
            "\033[0m");
 
-    printf("\033[32m""Client: %s %s\n""\033[0m", clients[counter_client - 1].prenom, clients[counter_client - 1].nom);
-    printf("\033[32m""Solde actuel: %.2fMAD\n""\033[0m", clients[counter_client - 1].solde);
-    printf("\033[32m""Nombre total d'achats effectues: %d\n""\033[0m", achat_count);
+    printf("\033[32m"
+           "Client: %s %s\n"
+           "\033[0m",
+           clients[counter_client - 1].prenom, clients[counter_client - 1].nom);
+    printf("\033[32m"
+           "Solde actuel: %.2fMAD\n"
+           "\033[0m",
+           clients[counter_client - 1].solde);
+    printf("\033[32m"
+           "Nombre total d'achats effectues: %d\n"
+           "\033[0m",
+           achat_count);
 
-    printf("\033[34m""Produits achetes:\n""\033[0m");
+    printf("\033[34m"
+           "Produits achetes:\n"
+           "\033[0m");
     int any_purchase = 0;
     for (int i = 0; i < produit_count; i++)
     {
         if (produits[i].quantity_sold > 0)
         {
             any_purchase = 1;
-            printf("\033[33m""- %s: %d achetes\n""\033[0m", produits[i].nom, produits[i].quantity_sold);
+            printf("\033[33m"
+                   "- %s: %d achetes\n"
+                   "\033[0m",
+                   produits[i].nom, produits[i].quantity_sold);
         }
     }
     if (!any_purchase)
     {
-        printf("\033[33m""Aucun produit achete encore.\n""\033[0m");
+        printf("\033[33m"
+               "Aucun produit achete encore.\n"
+               "\033[0m");
     }
 }
 
 // helpers
+char to_lowercase(char str[20])
+{
+    static char lower_str[20];
+    for (int i = 0; str[i]; i++)
+    {
+        lower_str[i] = tolower((unsigned char)str[i]);
+    }
+    return lower_str;
+}

@@ -84,12 +84,11 @@ void rechercher_produits_categorie(Produit table[MAX_PRODUIT], char category_nam
 void detailler_produit(int product_id, Produit table[MAX_PRODUIT]);
 
 // helpers
-
+void to_lowercase(char str[20]);
 
 // void tri_produits(int tri_choise, Produit table[MAX_PRODUIT]);
 // void rechercher_produit(int search_choise, Produit table[MAX_PRODUIT]);
 void Effectuer_achat(int product_id, int quantity);
-
 void afficher_statistiques();
 
 void main_menu();
