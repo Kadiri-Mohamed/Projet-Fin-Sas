@@ -8,7 +8,7 @@
 #define Title "=== SYSTEME D'ACHAT CLIENT ==="
 #define MAX_CLIENT 1
 #define MAX_PRODUIT 100
-#define MAX_ACHAT 200
+#define MAX_ACHAT 10
 
 typedef struct
 {
@@ -70,6 +70,19 @@ void depot_argent(Client table[MAX_CLIENT], float montant);
 void consluter_solde(Client table[MAX_CLIENT]);
 int verifier_solde(Client table[MAX_CLIENT], float montant);
 
+// fonctions produits
+void afficher_produits(Produit table[MAX_PRODUIT]);
+void tri_produits(int tri_choise, Produit table[MAX_PRODUIT]);
+void tri_prix_croissant(Produit table[MAX_PRODUIT], int max);
+void tri_prix_decroissant(Produit table[MAX_PRODUIT], int max);
+void tri_nom_alphabetique(Produit table[MAX_PRODUIT], int max);
+void organiser_produits_par_categorie(Produit table[MAX_PRODUIT], int category_id);
+void rechercher_produits(int search_choise, Produit table[MAX_PRODUIT]);
+void rechercher_produits_nom(Produit table[MAX_PRODUIT], char name[20]);
+void rechercher_produits_categorie(Produit table[MAX_PRODUIT], char category_name[20]);
+void detailler_produit(int product_id, Produit table[MAX_PRODUIT]);
+
+// helpers
 
 
 // void tri_produits(int tri_choise, Produit table[MAX_PRODUIT]);

@@ -10,7 +10,7 @@ void ajouter_client(Client table[MAX_CLIENT], char nom[20], char prenom[20])
                "\033[0m");
         return;
     }
-    
+
     table[counter_client].idClient = counter_client + 1;
 
     strcpy(table[counter_client].nom, nom);
@@ -22,7 +22,7 @@ void ajouter_client(Client table[MAX_CLIENT], char nom[20], char prenom[20])
     table[counter_client].solde = 500.0;
     
     printf("\033[32m"
-           "Client ajoute avec succes. ID: %d, Email: %s, Solde initial: %.2f\n"
+           "Client ajoute avec succes. ID: %d, Email: %s, Solde initial: %.2fMAD\n"
            "\033[0m",
            table[counter_client].idClient, table[counter_client].email, table[counter_client].solde);
 
@@ -85,8 +85,6 @@ int verifier_solde(Client table[MAX_CLIENT], float montant)
         return 0;
     }
 }
-
-
 
 void depot_argent(Client table[MAX_CLIENT], float montant)
 {
