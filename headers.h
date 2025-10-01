@@ -63,6 +63,10 @@ void ajouter_client(Client table[MAX_CLIENT]);
 void afficher_client(Client table[MAX_CLIENT]);
 void modifier_client(int searched_id, Client table[MAX_CLIENT]);
 
+void depot_argent(Client table[MAX_CLIENT], float montant);
+void consluter_solde(Client table[MAX_CLIENT]);
+
+
 
 // void tri_produits(int tri_choise, Produit table[MAX_PRODUIT]);
 // void rechercher_produit(int search_choise, Produit table[MAX_PRODUIT]);

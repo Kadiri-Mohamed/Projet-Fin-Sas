@@ -1,5 +1,55 @@
 #include "headers.h"
+void gerer_client(int choise)
+{
 
+    switch (choise)
+    {
+    case 1:
+        if (counter_client == 0)
+        {
+            printf("Aucun client connecte. Veuillez d'abord creer un profil.\n");
+            return;
+        }
+        printf("Modification de profile\n");
+        modifier_client(counter_client, clients);
+        break;
+    case 2:
+        printf("Consultation de profile\n");
+        afficher_client(clients);
+        break;
+    default:
+        system("cls");
+        printf("_______________________________________________\n");
+        printf("choix invalide\n");
+        break;
+    }
+}
+
+
+void gerer_solde(int choise)
+{
+    switch (choise)
+    {
+    case 1:
+
+        printf(" Consultation de solde\n");
+        consluter_solde(clients);
+        break;
+    case 2:
+
+        printf(" depot d'argent\n");
+        float montant;
+        printf("Entrez le montant a deposer: ");
+        scanf("%f", &montant);
+        depot_argent(clients, montant);
+        break;
+    default:
+        system("cls");
+        printf("_______________________________________________\n");
+        printf("choix invalide\n");
+        break;
+    }
+}
 void main_menu()
 {
     int choise_main;
