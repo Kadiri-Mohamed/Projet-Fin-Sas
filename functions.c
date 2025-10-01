@@ -1,59 +1,7 @@
 #include "headers.h"
-void gerer_client(int choise)
-{
-
-    switch (choise)
-    {
-    case 1:
-        if (counter_client == 0)
-        {
-            printf("Aucun client connecte. Veuillez d'abord creer un profil.\n");
-            return;
-        }
-        printf("Modification de profile\n");
-        modifier_client(counter_client, clients);
-        break;
-    case 2:
-        printf("Consultation de profile\n");
-        afficher_client(clients);
-        break;
-    default:
-        system("cls");
-        printf("_______________________________________________\n");
-        printf("choix invalide\n");
-        break;
-    }
-}
-
-
-void gerer_solde(int choise)
-{
-    switch (choise)
-    {
-    case 1:
-
-        printf(" Consultation de solde\n");
-        consluter_solde(clients);
-        break;
-    case 2:
-
-        printf(" depot d'argent\n");
-        float montant;
-        printf("Entrez le montant a deposer: ");
-        scanf("%f", &montant);
-        depot_argent(clients, montant);
-        break;
-    default:
-        system("cls");
-        printf("_______________________________________________\n");
-        printf("choix invalide\n");
-        break;
-    }
-}
 void main_menu()
 {
     int choise_main;
-
     int choise;
     do
     {
@@ -73,8 +21,14 @@ void main_menu()
         case 1:
             if (counter_client == 0)
             {
+                char nom[20];
+                char prenom[20];
+                printf("Entrez votre nom: ");
+                scanf(" %[^\n]", nom);
+                printf("Entrez votre prenom: ");
+                scanf(" %[^\n]", prenom);
                 printf("Creation de profil\n");
-                ajouter_client(clients);
+                ajouter_client(clients, nom, prenom);
             }
             else
             {
@@ -108,7 +62,7 @@ void main_menu()
             system("cls");
             printf("_______________________________________________\n");
 
-            // int choise;
+            int choise;
 
             printf("1. Afficher catalogue \n");
             printf("2. Rechercher produit\n");
@@ -133,4 +87,61 @@ void main_menu()
         }
 
     } while (choise_main != 0);
+}
+
+void gerer_client(int choise)
+{
+
+    switch (choise)
+    {
+    case 1:
+        if (counter_client == 0)
+        {
+            printf("Aucun client connecte. Veuillez d'abord creer un profil.\n");
+            return;
+        }
+        printf("Modification de profile\n");
+        char nom[20];
+        char prenom[20];
+        printf("Entrez le nouveau nom: ");
+        scanf(" %[^\n]", nom);
+        printf("Entrez le nouveau prenom: ");
+        scanf(" %[^\n]", prenom);
+        modifier_client(counter_client, clients, nom, prenom);
+        break;
+    case 2:
+        printf("Consultation de profile\n");
+        afficher_client(clients);
+        break;
+    default:
+        system("cls");
+        printf("_______________________________________________\n");
+        printf("choix invalide\n");
+        break;
+    }
+}
+
+void gerer_solde(int choise)
+{
+    switch (choise)
+    {
+    case 1:
+
+        printf(" Consultation de solde\n");
+        consluter_solde(clients);
+        break;
+    case 2:
+
+        printf(" depot d'argent\n");
+        float montant;
+        printf("Entrez le montant a deposer: ");
+        scanf("%f", &montant);
+        depot_argent(clients, montant);
+        break;
+    default:
+        system("cls");
+        printf("_______________________________________________\n");
+        printf("choix invalide\n");
+        break;
+    }
 }

@@ -1,29 +1,6 @@
 #include "headers.h"
 
-void consluter_solde(Client table[MAX_CLIENT])
-{
-    printf("\033[33m"
-           "Votre solde est de: %.2f\n"
-           "\033[0m",
-           table[counter_client - 1].solde);
-}
-
-void depot_argent(Client table[MAX_CLIENT], float montant)
-{
-    if (montant <= 0)
-    {
-        printf("\033[31m"
-               "Montant invalide. Le depot doit etre superieur a 0.\n"
-               "\033[0m");
-        return;
-    }
-    table[counter_client - 1].solde += montant;
-    printf("\033[32m"
-           "Depot de %.2f effectue avec succes. Nouveau solde: %.2f\n"
-           "\033[0m",
-           montant, table[counter_client - 1].solde);
-}
-
+// Client
 void ajouter_client(Client table[MAX_CLIENT], char nom[20], char prenom[20])
 {
     if (counter_client >= MAX_CLIENT)
@@ -33,11 +10,17 @@ void ajouter_client(Client table[MAX_CLIENT], char nom[20], char prenom[20])
                "\033[0m");
         return;
     }
+    
     table[counter_client].idClient = counter_client + 1;
+
     strcpy(table[counter_client].nom, nom);
+
     strcpy(table[counter_client].prenom, prenom);
+    
     snprintf(table[counter_client].email, sizeof(table[counter_client].email), "%s.%s@shop.com", prenom, nom);
+    
     table[counter_client].solde = 500.0;
+    
     printf("\033[32m"
            "Client ajoute avec succes. ID: %d, Email: %s, Solde initial: %.2f\n"
            "\033[0m",
@@ -64,18 +47,6 @@ void afficher_client(Client table[MAX_CLIENT])
     printf("---------------------------------------------------------------------------- \n");
 };
 
-int verifier_solde(Client table[MAX_CLIENT], float montant)
-{
-    if (table[counter_client - 1].solde >= montant)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-}
-
 void modifier_client(int searched_id, Client table[MAX_CLIENT], char nom[20], char prenom[20])
 {
     int found = 0;
@@ -101,3 +72,42 @@ void modifier_client(int searched_id, Client table[MAX_CLIENT], char nom[20], ch
         return;
     }
 };
+
+// Solde
+int verifier_solde(Client table[MAX_CLIENT], float montant)
+{
+    if (table[counter_client - 1].solde >= montant)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+
+
+void depot_argent(Client table[MAX_CLIENT], float montant)
+{
+    if (montant <= 0)
+    {
+        printf("\033[31m"
+               "Montant invalide. Le depot doit etre superieur a 0.\n"
+               "\033[0m");
+        return;
+    }
+    table[counter_client - 1].solde += montant;
+    printf("\033[32m"
+           "Depot de %.2f effectue avec succes. Nouveau solde: %.2f\n"
+           "\033[0m",
+           montant, table[counter_client - 1].solde);
+}
+
+void consluter_solde(Client table[MAX_CLIENT])
+{
+    printf("\033[33m"
+           "Votre solde est de: %.2f\n"
+           "\033[0m",
+           table[counter_client - 1].solde);
+}

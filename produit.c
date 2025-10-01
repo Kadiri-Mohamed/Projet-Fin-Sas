@@ -1,16 +1,23 @@
 #include "headers.h"
 
-void consluter_produits(int choise){
+void consluter_produits(int choise)
+{
     switch (choise)
     {
     case 1:
-
-        printf(" Consultation de solde\n");
+        printf(" Affichage catalogue\n");
         break;
     case 2:
 
-        printf(" depot d'argent\n");
+        printf(" Recherche produits\n");
         break;
+    case 3:
+        printf(" Tri des produits\n");
+        break;
+    case 4:
+        printf(" Recherche un produit\n");
+        break;
+
     default:
         system("cls");
         printf("_______________________________________________\n");

@@ -55,16 +55,20 @@ extern int counter_client;
 extern int achat_count;
 extern int current_client_id;
 
+// fonctions principales 
 void gerer_client(int choise);
 void gerer_solde(int choise);
 void consluter_produits(int choise);
 
-void ajouter_client(Client table[MAX_CLIENT]);
+// fonctions client
+void ajouter_client(Client table[MAX_CLIENT], char nom[20], char prenom[20]);
 void afficher_client(Client table[MAX_CLIENT]);
-void modifier_client(int searched_id, Client table[MAX_CLIENT]);
+void modifier_client(int searched_id, Client table[MAX_CLIENT] , char nom[20], char prenom[20]);
 
+// fonctions solde
 void depot_argent(Client table[MAX_CLIENT], float montant);
 void consluter_solde(Client table[MAX_CLIENT]);
+int verifier_solde(Client table[MAX_CLIENT], float montant);
 
 
 
